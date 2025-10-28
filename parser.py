@@ -12,35 +12,35 @@ import re
 def read_asm(fname: str):
     return
 
-# next_cmd: Takes a file-like object representing a .asm script and 
+# next_inst: Takes a file-like object representing a .asm script and 
 # returns the next instruction, or returns False if the end is reached.
-def next_cmd(file):
+def next_inst(file):
     return
 
-# cmd_fields: Takes a string representing a well-written C- or A-instruction, and
+# inst_fields: Takes a string representing a well-written C- or A-instruction, and
 # returns a tuple containing the instruction type and field(s).
-def cmd_fields(cmd: str):
+def inst_fields(inst: str):
 
-    if cmd[0] == '@':
-        cmd_type = 'A'
-        fields = cmd[1:] 
+    if inst[0] == '@':
+        inst_type = 'A'
+        fields = inst[1:] 
     else:
-        cmd_type = 'C'
+        inst_type = 'C'
 
         # Note:
         # 1. Instructions must be one of: comp, dest=comp, comp;jump, or dest=comp;jump.
         # 2. This logic only works if we assume that all Hack Assembly
         #    scripts being translated are error-free (as the project requires).
-        fields = re.split(r'=', cmd)  
+        fields = re.split(r'=', inst)  
         
         if len(fields) == 2:
             d = fields[0]
-            cmd = fields[1]
+            inst = fields[1]
         else:
             d = ''
-            cmd = fields[0]
+            inst = fields[0]
 
-        fields = re.split(r';', cmd)
+        fields = re.split(r';', inst)
 
         if len(fields) == 2:
             j = fields[1]
@@ -51,4 +51,4 @@ def cmd_fields(cmd: str):
 
         fields = [d,c,j]
 
-    return (cmd_type, fields)
+    return (inst_type, fields)
