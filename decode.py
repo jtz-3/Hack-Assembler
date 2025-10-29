@@ -34,11 +34,20 @@ jump_table = {'': '000', 'JGT': '001',
               'JLT': '100', 'JNE': '101', 
               'JLE': '110', 'JMP': '111'}
 
+# comp: Return the binary translation of the 'comp' part of a C-instruction.
 def comp(comp_str: str):
     return comp_table[comp_str]
 
+# dest: Return the binary translation of the 'dest' part of a C-instruction.
 def dest(dest_str: str):
     return dest_table[dest_str]
 
+# jump: Return the binary translation of the 'jump' part of a C-instruction.
 def jump(jump_str: str):
     return jump_table[jump_str]
+
+# a_instruction: Translate a string representing an A-instruction.
+def a_instruction(inst: str):
+    inst = inst[1:]
+    bin_addr = bin(int(inst))[2:]
+    return '0' + bin_addr.rjust(15, '0')
