@@ -11,7 +11,7 @@ import re
 # read_asm: Attempts to read in a given .asm file, throwing an error
 # if the file doesn't exist or is in the incorrect format
 def read_asm(fname: str):
-    if fname[-4:] is not '.asm':
+    if fname[-4:] != '.asm':
         print('Error: File is not a .asm file.')
         return None
     try:
@@ -39,7 +39,7 @@ def inst_fields(inst: str):
 
     if inst[0] == '@':
         inst_type = 'A'
-        fields = inst[1:] 
+        fields = inst
     else:
         inst_type = 'C'
 
