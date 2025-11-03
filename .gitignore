@@ -1,3 +1,5 @@
 __pycache__/
 *.asm
+*.hack
+*.zip
 .DS_Store

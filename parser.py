@@ -20,21 +20,6 @@ def read_asm(fname: str):
         print("Error: File '%s' not found." % fname)
         return None
 
-# next_inst: Takes a a list consisting of lines read in from a .asm file
-#            and returns:
-#   - The next line, if it exists
-#   - None, if the next line is a comment or whitespace
-#   - False, if the end of file is reached
-# Note: modifies inst_list in place by removing inst_list[0].
-def next_inst(inst_list):
-    try:
-        next_line = inst_list.pop(0)
-        stripped_line = next_line.strip(' \n')
-        if stripped_line.startswith('//') or not stripped_line:
-            return None
-    except IndexError:
-        return False
-
 # inst_fields: Takes a string representing a well-written C- or A-instruction, and
 # returns a tuple containing the instruction type and field(s).
 def inst_fields(inst: str):
