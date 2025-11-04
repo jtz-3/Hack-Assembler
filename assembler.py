@@ -11,6 +11,7 @@ https://www.nand2tetris.org/_files/ugd/44046b_7ef1c00a714c46768f08c459a6cab45a.p
 
 import parser
 import decode
+import symboltable
 import sys
 
 if len(sys.argv) != 2:
