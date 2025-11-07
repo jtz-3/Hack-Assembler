@@ -17,18 +17,21 @@ class SymbolTable:
         
         self.current_var_addr = 16
 
-    # add_label: Adds a (sym, val) label pairing to the symbol table.
-    # def add_label(self, sym: str, val: int):
-    #     self.sym_table[sym] = int
+    def __setitem__(self, key, value):
+        self.sym_table[key] = value
+
+    def __getitem__(self, key):
+        return self.sym_table[key]
 
     # add_variable: Adds the variable sym to the next available memory address
-    # (beginning with the address 16, or 0x0010)
+    # (beginning with the address 16)
     # (Possibly redundant)
     def add_variable(self, sym: str):
         self.sym_table[sym] =  self.current_var_addr
         self.current_var_addr += 1
 
-    # Returns: False if symbol not found, address if symbol is in the table.
+    # check_table: Returns False if sym not found; or the address corresponding to sym
+    # if it is in the table.
     def check_table(self, sym: str):
         try:
             return self.sym_table[sym]

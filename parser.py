@@ -23,7 +23,6 @@ def read_asm(fname: str):
 # inst_fields: Takes a string representing a well-written C- or A-instruction, and
 # returns a tuple containing the instruction type and field(s).
 def inst_fields(inst: str):
-
     if inst[0] == '@':
         inst_type = 'A'
         fields = inst
